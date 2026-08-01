@@ -54,6 +54,17 @@ const playRound = function (fcomputer, fhuman) {
     }
 };
 
+const playGame = function  ()
+{
+    for (let i = 1; i <=5; i++){
+        playRound();
+    }
+    if (humanScore > computerScore){
+        return "You win the game!"
+    }
+    else {
+        return "Sorry, the computer wins."
+    }
+};
 
-
-console.log(playRound(), score);
+console.log(playGame());
