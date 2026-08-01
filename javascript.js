@@ -11,4 +11,13 @@ const getComputerChoice = function () {
    }
 };
 
-console.log(getComputerChoice());
+const getHumanChoice = function () {
+    let humanChoice = prompt("please select paper, scissors, or rock");
+    humanChoice = humanChoice.toLowerCase();
+    console.log(humanChoice);
+    return humanChoice;
+}
+
+
+
+getHumanChoice();
