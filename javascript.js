@@ -15,7 +15,7 @@ const getComputerChoice = function () {
    }
 };
 
-const playRound = function (fcomputer, fhuman) {
+const playRound = function () {
     let human = humanChoice;
     let computer = getComputerChoice();
     if (human === computer) {
@@ -46,26 +46,6 @@ const playRound = function (fcomputer, fhuman) {
     }
 };
 
-// const playGame = function  ()
-// {
-//     for (let i = 1; i <=5; i++){
-//         playRound();
-//     }
-//     if (humanScore === computerScore) {
-//         return "It's a tie! Final score is Computer: " + computerScore + ", " 
-//         + "User: " + humanScore;
-//     }
-//     if (humanScore > computerScore){
-//         console.log(score);
-//         return "You win the game! Final score is Computer: " + computerScore + ", " 
-//         + "User: " + humanScore;
-//     }
-//     else {
-//         console.log(score);
-//         return "Sorry, the computer wins. Final score is Computer: " + computerScore + ", " 
-//         + "User: " + humanScore;
-//     }
-// };
 const currentScore = document.querySelector("#currentScore");
 const result = document.querySelector("#result");
 const winner = document.querySelector("#winner");
@@ -75,8 +55,13 @@ currentScore.textContent = "";
 winner.textContent = "";
 
 const buttons = document.querySelector("#buttons");
+
 buttons.addEventListener("click", (event) => {
     let target = event.target;
+    
+    if (target.tagName !== "BUTTON") {
+        return; 
+    }
 
     switch(target.id){
         case "paper":
@@ -91,13 +76,17 @@ buttons.addEventListener("click", (event) => {
             humanChoice = "rock";
             break;
     };
-    while (computerScore <5 && humanScore <5){
-        playRound();
+
+    if (computerScore ===5 || humanScore === 5) {
+        return
     }
-    if (computerScore === 5){
-        winner.textContent = "The computer wins the game."
+    playRound();
+    
+    if (computerScore === 5) {
+        winner.textContent = "The computer wins the game.";
     }
     else if (humanScore === 5) {
-        winner.textContent = "You win the game!"
+        winner.textContent = "You win the game!";
     }
-})
+}); 
+
