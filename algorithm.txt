@@ -25,4 +25,6 @@ add a UI to the html file allowing the game to be played with buttons rather tha
         add logic to update the divs with the result of the round and the current score,
         ...refactoring function logic as required
     add logic to end game when one score === 5, and add div to display winner
+    add new game button that appears after the game is over and refreshes the page on
+    ...click
     

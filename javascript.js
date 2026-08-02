@@ -49,6 +49,9 @@ const playRound = function () {
 const currentScore = document.querySelector("#currentScore");
 const result = document.querySelector("#result");
 const winner = document.querySelector("#winner");
+const newGame = document.createElement("button");
+newGame.textContent = "New Game?"
+const parentDiv = document.getElementById("newGame");
 
 result.textContent = "";
 currentScore.textContent = "";
@@ -81,12 +84,23 @@ buttons.addEventListener("click", (event) => {
         return
     }
     playRound();
-    
+
     if (computerScore === 5) {
         winner.textContent = "The computer wins the game.";
+        parentDiv.appendChild(newGame);
+        newGame.addEventListener("click", (event)=> {
+        let target = event.target;
+        location.reload();
+        });
     }
     else if (humanScore === 5) {
         winner.textContent = "You win the game!";
+        parentDiv.appendChild(newGame);
+        newGame.addEventListener("click", (event)=> {
+        let target = event.target;
+        location.reload();
+        });
     }
+    
 }); 
 
