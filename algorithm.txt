@@ -1,0 +1,16 @@
+create basic function that returns random number from 1 to 3
+    assign text values to the numbers for comparison to user input
+
+create basic function to acquire human players selection
+    create a variable to store the human players selection
+
+add global variables to store the computer and human scores and initialize them to 0
+
+create basic function to play a single round
+    call each of the above functions and compare the result
+    iterate the score as appropriate
+    display the result of the round and the score
+
+create a basic function to call the round function 5 times
+    track the score over all 5 rounds
+    display the final score after all rounds are complete

@@ -58,22 +58,42 @@ const playRound = function (fcomputer, fhuman) {
     }
 };
 
-const playGame = function  ()
-{
-    for (let i = 1; i <=5; i++){
-        playRound();
-    }
-    if (humanScore === computerScore) {
-        return "It's a tie! Final score is Computer: " + computerScore + ", " + "User: " + humanScore;
-    }
-    if (humanScore > computerScore){
-        console.log(score);
-        return "You win the game! Final score is Computer: " + computerScore + ", " + "User: " + humanScore;
-    }
-    else {
-        console.log(score);
-        return "Sorry, the computer wins. Final score is Computer: " + computerScore + ", " + "User: " + humanScore;
-    }
-};
+// const playGame = function  ()
+// {
+//     for (let i = 1; i <=5; i++){
+//         playRound();
+//     }
+//     if (humanScore === computerScore) {
+//         return "It's a tie! Final score is Computer: " + computerScore + ", " 
+//         + "User: " + humanScore;
+//     }
+//     if (humanScore > computerScore){
+//         console.log(score);
+//         return "You win the game! Final score is Computer: " + computerScore + ", " 
+//         + "User: " + humanScore;
+//     }
+//     else {
+//         console.log(score);
+//         return "Sorry, the computer wins. Final score is Computer: " + computerScore + ", " 
+//         + "User: " + humanScore;
+//     }
+// };
 
-console.log(playGame());
+const buttons = document.querySelector("#buttons");
+buttons.addEventListener("click", (event) => {
+    let target = event.target;
+
+    switch(target.id){
+        case "paper":
+            alert("paper");
+            break;
+
+        case "scissors":
+            alert("scissors");
+            break;
+
+        case "rock":
+            alert("rock");
+            break;
+    };
+})
