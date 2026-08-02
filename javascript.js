@@ -1,6 +1,6 @@
 let computerScore = 0;
 let humanScore = 0;
-let score = "Computer: " +computerScore + "," + "User: " + humanScore;
+let humanChoice = "";
 
 const getComputerChoice = function () {
    let rnd = Math.floor(Math.random() * 3) +1;
@@ -15,46 +15,34 @@ const getComputerChoice = function () {
    }
 };
 
-const getHumanChoice = function () {
-    let humanChoice = prompt("please select paper, scissors, or rock");
-    humanChoice = humanChoice.toLowerCase();
-    console.log("You chose " + humanChoice);
-    return humanChoice;
-};
-
 const playRound = function (fcomputer, fhuman) {
-    let human = getHumanChoice();
+    let human = humanChoice;
     let computer = getComputerChoice();
     if (human === computer) {
-        console.log("Computer chose " + computer + ". It's a tie!");
-        return "It's a tie!"
+        currentScore.textContent = "Computer: " + computerScore + ", " + "User: " + humanScore;
+        return result.textContent = "Computer chose " + computer +". You chose " + human
+        + ". It's a tie."
     }
     else if (human === "rock" && computer === "scissors") {
         ++humanScore;
-        score = "Computer: " + computerScore + ", " + "User: " + humanScore;
-        console.log("Computer chose " + computer + ". You win.")
-        console.log(score);
-        return "Rock beats scissors! You win!";
+        currentScore.textContent= "Computer: " + computerScore + ", " + "User: " + humanScore;
+        return result.textContent = "Rock beats scissors! You win!";
     }
     else if (human === "paper" && computer === "rock") {
         ++humanScore;
-        score = "Computer: " + computerScore + ", " + "User: " + humanScore;
-        console.log("Computer chose " + computer + ". You win.")
-        console.log(score);
-        return "Paper beats rock! You win!";
+        currentScore.textContent = "Computer: " + computerScore + ", " + "User: " + humanScore;
+        return result.textContent = "Paper beats rock! You win!";
     }
     else if (human === "scissors" && computer === "paper") {
         ++humanScore;
-        score = "Computer: " + computerScore + ", " + "User: " + humanScore;
-        console.log("Computer chose " + computer + ". You win.")
-        console.log(score);
-        return"Scissors beats paper! You win!";
+        currentScore.textContent = "Computer: " + computerScore + ", " + "User: " + humanScore;    
+        return result.textContent = "Scissors beats paper! You win!";
     }
     else {
         ++computerScore;
-        score = "Computer: " +computerScore + ", " + "User: " + humanScore;
-        console.log(score);
-        console.log("Computer chose " + computer + ". Computer wins!");
+        currentScore.textContent = "Computer: " +computerScore + ", " + "User: " + humanScore;
+       return result.textContent = "Computer chose " + computer + ". You chose " 
+       + human + ". Computer wins."
     }
 };
 
@@ -78,6 +66,13 @@ const playRound = function (fcomputer, fhuman) {
 //         + "User: " + humanScore;
 //     }
 // };
+const currentScore = document.querySelector("#currentScore");
+const result = document.querySelector("#result");
+const winner = document.querySelector("#winner");
+
+result.textContent = "";
+currentScore.textContent = "";
+winner.textContent = "";
 
 const buttons = document.querySelector("#buttons");
 buttons.addEventListener("click", (event) => {
@@ -85,15 +80,24 @@ buttons.addEventListener("click", (event) => {
 
     switch(target.id){
         case "paper":
-            alert("paper");
+            humanChoice = "paper";
             break;
 
         case "scissors":
-            alert("scissors");
+            humanChoice = "scissors";
             break;
 
         case "rock":
-            alert("rock");
+            humanChoice = "rock";
             break;
     };
+    while (computerScore <5 && humanScore <5){
+        playRound();
+    }
+    if (computerScore === 5){
+        winner.textContent = "The computer wins the game."
+    }
+    else if (humanScore === 5) {
+        winner.textContent = "You win the game!"
+    }
 })

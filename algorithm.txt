@@ -14,3 +14,15 @@ create basic function to play a single round
 create a basic function to call the round function 5 times
     track the score over all 5 rounds
     display the final score after all rounds are complete
+
+add a UI to the html file allowing the game to be played with buttons rather than propmpts
+    disable the playGame function for now
+    add a ul containing three correctly labeled buttons
+    add a selector to the js file
+    add an eventlistener to the ul so that it propagates to the buttons
+    add current score and result divs to html
+        add selectors to manipulate the content of the divs
+        add logic to update the divs with the result of the round and the current score,
+        ...refactoring function logic as required
+    add logic to end game when one score === 5, and add div to display winner
+    
